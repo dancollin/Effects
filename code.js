@@ -45,3 +45,16 @@ function funny() {
 }
 
  
+// an event listener to catch mouse movement changes over canvas
+playground.addEventListener("mousemove", function (playground, evt) {
+    getMousePos(playground, evt);
+    document.querySelector("#mousepos").innerHTML = mouseX + " " + mouseY;
+ }, false);
+ 
+ // updates the mouse
+ function getMousePos(evt) {
+    var rect = playground.getBoundingClientRect();
+    mouseX = evt.clientX - rect.left;
+    TRANSP = mouseX/playground.width;
+    mouseY = evt.clientY- rect.top;
+ }
